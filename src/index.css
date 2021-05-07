@@ -15,25 +15,25 @@ code {
   margin: auto;
   padding: 10px;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-gap: 50px
+  grid-template-columns: repeat(4,auto);
+  grid-gap: 50px;
+  border: 1px solid;
  }
-.card{
+ .card{
   width: 150px;
   height: 200px;
   border-radius: 0.6em !important;
   cursor: pointer;
   border: 1.5px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .card:hover{
   box-shadow: 0 13px 27px -5px hsl(240deg 30% 28% / 25%), 0 8px 16px -8px hsl(0deg 0% 0% / 30%), 0 -6px 16px -6px hsl(0deg 0% 0% / 3%);
   transition: all ease 200ms;
 }
-.card{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+
 .price{
   margin: 16px 0px 8px 8px;
 }
@@ -45,4 +45,49 @@ code {
   justify-content: center;
   align-items: center;
   cursor: pointer;
+}
+/* ------------------responsive-------------- */
+@media only screen and (max-width: 400px){
+  div.container{
+      grid-template-columns: auto;
+      grid-row-gap: 10px;
+      width: auto;
+  }
+  .card{
+    width: auto;
+  }
+  .pricebutton{
+    width: auto;
+    margin: auto;
+  }
+}
+
+@media only screen and (min-width: 401px) and (max-width:750px){
+  div.container{
+      grid-template-columns: repeat(2,auto);
+      grid-row-gap: 10px;
+      width: auto;
+  }
+  .card{
+    width: 100%;
+  }
+  .pricebutton{
+    width: auto;
+    margin: auto;
+  }
+}
+
+@media only screen and (min-width: 751px) and (max-width:1050px){
+  div.container{
+      grid-template-columns: repeat(3,1fr);
+      grid-row-gap: 10px;
+      width: auto;
+  }
+  .card{
+    width: 100%;
+  }
+  .pricebutton{
+    width: auto;
+    margin: auto;
+  }
 }

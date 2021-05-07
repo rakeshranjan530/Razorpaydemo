@@ -1,6 +1,6 @@
 import Card from "../component/Card"
 import image from '../assets/image.jpeg';
-
+import data from '../utils/data';
 const Container =()=>{
 
     const isScriptAdded = async (src)=>{
@@ -16,13 +16,13 @@ const Container =()=>{
             document.body.appendChild(script);
         })
     }
-    const buyProduct = async() => {
+    const buyProduct = async(price) => {
         const res = await isScriptAdded('https://checkout.razorpay.com/v1/checkout.js');
         if(!res){
             alert("Razorpay is failed to laod, Are you online?");
             return;
         }
-        const amount = '900';
+        const amount = (price*100).toString();
         var options = {
             "key": "rzp_test_zlbws4Uv3OeKqF", // Enter the Key ID generated from the Dashboard
             amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
@@ -48,13 +48,16 @@ const Container =()=>{
     }
     return(
         <div className="container">
-            <Card buyProduct={buyProduct}/>
-            <Card buyProduct={buyProduct}/>
-            <Card buyProduct={buyProduct}/>
-            <Card buyProduct={buyProduct}/>
-            <Card buyProduct={buyProduct}/>
-            <Card buyProduct={buyProduct}/>
-            <Card buyProduct={buyProduct}/>
+            {
+                data?.map((price)=>{
+                    return <div key={price}>
+                        <Card
+                          price ={price}
+                          buyProduct={buyProduct}
+                        />
+                    </div>
+                })
+            }
         </div>
     )
 }
