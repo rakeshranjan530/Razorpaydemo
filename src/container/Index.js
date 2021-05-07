@@ -36,9 +36,6 @@ const Container =()=>{
                 alert(response.razorpay_order_id);
                 alert(response.razorpay_signature)
             },
-            "prefill": {
-                "name": "Rakesh Ranjan",
-            },
             "theme": {
                 "color": "#3399cc"
             }
